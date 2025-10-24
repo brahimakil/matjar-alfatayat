@@ -1,0 +1,225 @@
+.public-home {
+  min-height: 100vh;
+}
+
+.all-products-section {
+  padding: 80px 0;
+  background-color: var(--bg-secondary);
+}
+
+.all-products-section .section-title {
+  color: var(--text-primary) !important;
+}
+
+.all-products-section .section-subtitle {
+  color: var(--text-secondary) !important;
+}
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 50px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 18px 50px 18px 20px;
+  border: 3px solid var(--border-color);
+  border-radius: 50px;
+  font-size: 1.1rem;
+  background: var(--card-bg);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px rgba(203, 24, 216, 0.1);
+}
+
+.clear-search {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--accent);
+  color: white;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.clear-search:hover {
+  background: var(--accent-hover);
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.loading-state,
+.empty-state {
+  text-align: center;
+  padding: 80px 20px;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.product-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px var(--shadow);
+  border-color: var(--accent);
+}
+
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: var(--image-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px;
+}
+
+.product-image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-image-wrapper img {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 20px;
+  background: var(--card-bg);
+}
+
+.product-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  margin-bottom: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-category {
+  font-size: 0.95rem;
+  color: var(--text-secondary) !important;
+  margin-bottom: 12px;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--accent) !important;
+}
+
+.load-more-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.load-more-btn {
+  padding: 15px 50px;
+  background: linear-gradient(135deg, var(--accent), #e01ff0);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(203, 24, 216, 0.4);
+}
+
+.load-more-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(203, 24, 216, 0.6);
+}
+
+.load-more-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .all-products-section {
+    padding: 60px 0;
+  }
+
+  .search-container {
+    margin-bottom: 30px;
+  }
+
+  .search-input {
+    padding: 15px 45px 15px 18px;
+    font-size: 1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .product-image-wrapper {
+    height: 220px;
+  }
+
+  .product-info {
+    padding: 15px;
+  }
+
+  .product-name {
+    font-size: 1.1rem;
+  }
+
+  .product-price {
+    font-size: 1.3rem;
+  }
+
+  .load-more-btn {
+    padding: 12px 40px;
+    font-size: 1rem;
+  }
+}
+

@@ -1,0 +1,123 @@
+.categories-section {
+  padding: 60px 0;
+  background-color: var(--bg-primary);
+}
+
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.carousel-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(203, 24, 216, 0.3);
+}
+
+.carousel-btn:hover {
+  background: var(--accent-hover);
+  transform: scale(1.1);
+}
+
+.categories-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+  flex: 1;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.categories-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 25px 30px;
+  background: var(--card-bg);
+  border: 3px solid var(--border-color);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  min-width: 140px;
+}
+
+.category-item:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent);
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.category-item.active {
+  background: linear-gradient(135deg, var(--accent), #e01ff0);
+  border-color: var(--accent);
+  color: white;
+}
+
+.category-icon {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  font-size: 2.5rem;
+}
+
+.category-item.active .category-icon {
+  filter: brightness(1.2);
+}
+
+.category-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-align: center;
+}
+
+.category-item.active .category-name {
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .categories-section {
+    padding: 40px 0;
+  }
+
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+
+  .category-item {
+    min-width: 120px;
+    padding: 20px 25px;
+  }
+
+  .category-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+  }
+
+  .category-name {
+    font-size: 1rem;
+  }
+}
+

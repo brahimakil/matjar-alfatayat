@@ -1,0 +1,288 @@
+.product-detail-container {
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+  padding: 40px 0;
+}
+
+.product-detail-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.back-btn {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.back-btn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: translateX(-5px);
+}
+
+.product-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  background: var(--card-bg);
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.product-images-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-image {
+  width: 100%;
+  height: 500px;
+  border-radius: 15px;
+  overflow: hidden;
+  background: var(--image-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  padding: 15px;
+}
+
+.main-image img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.thumbnail-images {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  background: var(--image-bg);
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnail:hover {
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+
+.thumbnail.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(224, 31, 240, 0.3);
+}
+
+.thumbnail img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.product-info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.product-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--text-primary) !important;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.product-category-badge {
+  display: inline-block;
+  background: var(--bg-secondary);
+  color: var(--text-secondary) !important;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  width: fit-content;
+  border: 1px solid var(--border-color);
+}
+
+.product-price-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-top: 2px solid var(--border-color);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.product-price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent) !important;
+}
+
+.stock-badge {
+  background: #4caf50;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.stock-badge.low {
+  background: #ff9800;
+}
+
+.product-description {
+  margin-top: 20px;
+}
+
+.product-description h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  margin-bottom: 15px;
+}
+
+.product-description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary) !important;
+}
+
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 30px;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-btn:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.whatsapp-icon {
+  font-size: 1.8rem;
+}
+
+.loading-state,
+.empty-state {
+  text-align: center;
+  padding: 100px 20px;
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 40px;
+  }
+
+  .main-image {
+    height: 350px;
+  }
+
+  .product-title {
+    font-size: 2rem;
+  }
+
+  .product-price {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-detail-content {
+    padding: 0 1rem;
+  }
+
+  .product-detail-grid {
+    padding: 30px 20px;
+  }
+
+  .main-image {
+    height: 280px;
+  }
+
+  .thumbnail {
+    width: 70px;
+    height: 70px;
+    padding: 3px;
+  }
+
+  .product-title {
+    font-size: 1.8rem;
+  }
+
+  .product-price {
+    font-size: 1.8rem;
+  }
+
+  .product-description h3 {
+    font-size: 1.3rem;
+  }
+
+  .product-description p {
+    font-size: 1rem;
+  }
+
+  .whatsapp-btn {
+    font-size: 1.1rem;
+    padding: 15px 35px;
+  }
+}
+
