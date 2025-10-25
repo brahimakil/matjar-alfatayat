@@ -60,7 +60,7 @@ const FeaturedProducts = () => {
               className="product-card"
             >
               <div className="product-image-wrapper">
-                <img src={getMainImage(product)} alt={product.name} />
+                <img src={getMainImage(product) || ''} alt={product.name} />
                 <span className="featured-badge">⭐ مميز</span>
               </div>
               <div className="product-info">

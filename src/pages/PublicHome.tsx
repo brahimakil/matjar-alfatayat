@@ -123,7 +123,7 @@ const PublicHome = () => {
                     className="product-card"
                   >
                     <div className="product-image-wrapper">
-                      <img src={getMainImage(product)} alt={product.name} />
+                      <img src={getMainImage(product) || ''} alt={product.name} />
                     </div>
                     <div className="product-info">
                       <h3 className="product-name">{product.name}</h3>

@@ -27,18 +27,28 @@ const HeroBanner = () => {
   }, []);
 
   useEffect(() => {
-    if (heroImages.length > 1) {
-      const interval = setInterval(() => {
-        setCurrentIndex((prev) => (prev + 1) % heroImages.length);
-      }, 5000); // Change slide every 5 seconds
+    if (heroImages.length <= 1) return;
 
-      return () => clearInterval(interval);
-    }
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => {
+        const next = (prev + 1) % heroImages.length;
+        console.log('Auto-changing slide from', prev, 'to', next);
+        return next;
+      });
+    }, 5000); // Change slide every 5 seconds
+
+    console.log('Interval started for', heroImages.length, 'images');
+
+    return () => {
+      console.log('Interval cleared');
+      clearInterval(interval);
+    };
   }, [heroImages.length]);
-
+  
   const fetchHeroImages = async () => {
     try {
       const data = await publicAPI.getHeroImages();
+      console.log('Fetched hero images:', data);
       setHeroImages(data);
     } catch (error) {
       console.error('Error fetching hero images:', error);
@@ -73,61 +83,68 @@ const HeroBanner = () => {
 
   return (
     <div className="hero-banner">
-      <div className="hero-slide" style={{ backgroundImage: `url(${heroImageUrl})` }}>
-        {currentHero.overlayEnabled && (
+      <div className="hero-slides-container">
+        {heroImages.map((hero, index) => (
           <div 
-            className="hero-overlay" 
-            style={{ opacity: currentHero.overlayOpacity }}
-          />
-        )}
-        
-        <div className="hero-content">
-          <div 
-            className="hero-text-box"
-            style={{ 
-              backgroundColor: currentHero.textBackgroundColor 
-                ? currentHero.textBackgroundColor.replace(/rgba?\(([^)]+)\)/, (match, values) => {
-                    const parts = values.split(',').map((v: string) => v.trim());
-                    if (parts.length === 4) {
-                      // If already rgba, reduce opacity to 30%
-                      return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, 0.1)`;
-                    } else if (parts.length === 3) {
-                      // If rgb, convert to rgba with 30% opacity
-                      return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, 0.1)`;
-                    }
-                    return match;
-                  })
-                : 'rgba(0, 0, 0, 0.3)'
-            }}
+            key={hero.id}
+            className={`hero-slide ${index === currentIndex ? 'active' : ''}`}
+            style={{ backgroundImage: `url(${hero.imageUrl || ''})` }}
           >
-            {currentHero.headerText && (
-              <h1 
-                className="hero-header"
-                style={{ color: currentHero.headerColor }}
-              >
-                {currentHero.headerText}
-              </h1>
+            {hero.overlayEnabled && (
+              <div 
+                className="hero-overlay" 
+                style={{ opacity: hero.overlayOpacity }}
+              />
             )}
-            {currentHero.descriptionText && (
-              <p 
-                className="hero-description"
-                style={{ color: currentHero.descriptionColor }}
+
+            
+            <div className="hero-content">
+              <div 
+                className="hero-text-box"
+                style={{ 
+                  backgroundColor: hero.textBackgroundColor 
+                    ? hero.textBackgroundColor.replace(/rgba?\(([^)]+)\)/, (match, values) => {
+                        const parts = values.split(',').map((v: string) => v.trim());
+                        if (parts.length === 4) {
+                          return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, 0.1)`;
+                        } else if (parts.length === 3) {
+                          return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, 0.1)`;
+                        }
+                        return match;
+                      })
+                    : 'rgba(0, 0, 0, 0.3)'
+                }}
               >
-                {currentHero.descriptionText}
-              </p>
-            )}
-            {currentHero.link && (
-              <a 
-                href={currentHero.link} 
-                className="hero-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                اكتشف الآن
-              </a>
-            )}
+                {hero.headerText && (
+                  <h1 
+                    className="hero-header"
+                    style={{ color: hero.headerColor }}
+                  >
+                    {hero.headerText}
+                  </h1>
+                )}
+                {hero.descriptionText && (
+                  <p 
+                    className="hero-description"
+                    style={{ color: hero.descriptionColor }}
+                  >
+                    {hero.descriptionText}
+                  </p>
+                )}
+                {hero.link && (
+                  <a 
+                    href={hero.link} 
+                    className="hero-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    اكتشف الآن
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
-        </div>
+        ))}
 
         {heroImages.length > 1 && (
           <>
