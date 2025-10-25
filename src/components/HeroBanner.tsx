@@ -98,17 +98,7 @@ const HeroBanner = () => {
               <div 
                 className="hero-text-box"
                 style={{ 
-                  backgroundColor: hero.textBackgroundColor 
-                    ? hero.textBackgroundColor.replace(/rgba?\(([^)]+)\)/, (match, values) => {
-                        const parts = values.split(',').map((v: string) => v.trim());
-                        if (parts.length === 4) {
-                          return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, 0.1)`;
-                        } else if (parts.length === 3) {
-                          return `rgba(${parts[0]}, ${parts[1]}, ${parts[2]}, 0.1)`;
-                        }
-                        return match;
-                      })
-                    : 'rgba(0, 0, 0, 0.3)'
+                  backgroundColor: 'transparent'
                 }}
               >
                 {hero.headerText && (

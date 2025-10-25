@@ -3,6 +3,12 @@
   background-color: var(--bg-secondary);
 }
 
+@media (max-width: 768px) {
+  .featured-section {
+    padding: 40px 0;
+  }
+}
+
 .featured-section * {
   color: inherit;
 }

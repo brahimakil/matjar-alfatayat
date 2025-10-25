@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  margin-bottom: 60px;
 }
 
 .hero-loading {
@@ -75,8 +76,6 @@
 .hero-text-box {
   max-width: 650px;
   padding: 2.5rem;
-  border-radius: 20px;
-  backdrop-filter: blur(8px);
   animation: slideUp 0.8s ease-out;
   margin-bottom: 3rem;
 }
@@ -205,18 +204,32 @@
 }
 
 @media (max-width: 768px) {
+  .hero-banner {
+    margin-bottom: 0;
+  }
+
   .hero-slide {
+    height: 400px;
+  }
+
+  .hero-slides-container {
     height: 400px;
   }
 
   .hero-content {
     padding: 0 1rem;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 
   .hero-text-box {
     padding: 1.5rem;
     max-width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 0;
+    margin-top: auto;
+    text-align: center;
+    align-self: center;
   }
 
   .hero-header {
