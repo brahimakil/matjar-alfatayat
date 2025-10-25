@@ -71,12 +71,44 @@
   color: white;
 }
 
+.category-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--image-bg);
+  border-radius: 50%;
+}
+
+.category-icon-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.category-icon-img[src=""],
+.category-icon-img:not([src]) {
+  display: none;
+}
+
+.category-icon-wrapper:has(.category-icon-img[src=""])::before,
+.category-icon-wrapper:has(.category-icon-img:not([src]))::before {
+  content: '📁';
+  font-size: 2.5rem;
+  opacity: 0.5;
+}
+
 .category-icon {
   width: 60px;
   height: 60px;
   object-fit: cover;
   border-radius: 50%;
   font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .category-item.active .category-icon {

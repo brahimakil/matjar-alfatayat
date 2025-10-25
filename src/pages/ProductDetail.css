@@ -68,6 +68,30 @@
   object-fit: contain;
 }
 
+.main-image img[src=""],
+.main-image img:not([src]) {
+  display: none;
+}
+
+.main-image:has(img[src=""])::before,
+.main-image:has(img:not([src]))::before {
+  content: '📦';
+  font-size: 120px;
+  opacity: 0.3;
+}
+
+.thumbnail img[src=""],
+.thumbnail img:not([src]) {
+  display: none;
+}
+
+.thumbnail:has(img[src=""])::before,
+.thumbnail:has(img:not([src]))::before {
+  content: '📦';
+  font-size: 40px;
+  opacity: 0.3;
+}
+
 .thumbnail-images {
   display: flex;
   gap: 15px;
@@ -176,6 +200,57 @@
   font-size: 1.1rem;
   line-height: 1.8;
   color: var(--text-secondary) !important;
+}
+
+.product-colors {
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 2px solid var(--border-color);
+}
+
+.product-colors h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary) !important;
+  margin-bottom: 15px;
+}
+
+.colors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.color-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.color-item:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+.color-circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 2px 5px var(--shadow);
+}
+
+.color-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary) !important;
 }
 
 .whatsapp-btn {

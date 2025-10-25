@@ -5,7 +5,7 @@ import './CategoriesCarousel.css';
 interface Category {
   id: string;
   name: string;
-  icon: string;
+  iconUrl?: string;
 }
 
 interface CategoriesCarouselProps {
@@ -79,7 +79,13 @@ const CategoriesCarousel = ({ onCategorySelect, selectedCategory }: CategoriesCa
                 className={`category-item ${selectedCategory === category.id ? 'active' : ''}`}
                 onClick={() => onCategorySelect(category.id)}
               >
-                <img src={category.icon} alt={category.name} className="category-icon" />
+                <div className="category-icon-wrapper">
+                  <img 
+                    src={category.iconUrl || ''} 
+                    alt={category.name} 
+                    className="category-icon-img" 
+                  />
+                </div>
                 <span className="category-name">{category.name}</span>
               </button>
             ))}

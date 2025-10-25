@@ -69,9 +69,11 @@ const HeroBanner = () => {
 
   const currentHero = heroImages[currentIndex];
 
+  const heroImageUrl = currentHero.imageUrl || '';
+
   return (
     <div className="hero-banner">
-      <div className="hero-slide" style={{ backgroundImage: `url(${currentHero.imageUrl})` }}>
+      <div className="hero-slide" style={{ backgroundImage: `url(${heroImageUrl})` }}>
         {currentHero.overlayEnabled && (
           <div 
             className="hero-overlay" 

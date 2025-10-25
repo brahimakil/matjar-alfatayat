@@ -11,6 +11,7 @@ interface Product {
   stock: number;
   category: string;
   images: any[];
+  colors?: Array<{ name: string; value: string }>;
 }
 
 interface WhatsAppSettings {
@@ -102,7 +103,10 @@ const ProductDetail = () => {
                     className={`thumbnail ${index === selectedImage ? 'active' : ''}`}
                     onClick={() => setSelectedImage(index)}
                   >
-                    <img src={img.url || img.data} alt={`${product.name} ${index + 1}`} />
+                    <img 
+                      src={img.url || img.data || ''} 
+                      alt={`${product.name} ${index + 1}`} 
+                    />
                   </button>
                 ))}
               </div>
@@ -125,6 +129,23 @@ const ProductDetail = () => {
               <h3>الوصف</h3>
               <p>{product.description || 'لا يوجد وصف متاح'}</p>
             </div>
+
+            {product.colors && product.colors.length > 0 && (
+              <div className="product-colors">
+                <h3>الألوان المتاحة</h3>
+                <div className="colors-list">
+                  {product.colors.map((color, index) => (
+                    <div key={index} className="color-item" title={color.name}>
+                      <div 
+                        className="color-circle" 
+                        style={{ backgroundColor: color.value }}
+                      ></div>
+                      <span className="color-name">{color.name}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
 
             {whatsapp && whatsapp.phoneNumber && (
               <button 

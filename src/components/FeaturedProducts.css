@@ -81,6 +81,25 @@
   transition: transform 0.3s ease;
 }
 
+.product-image-wrapper img[src=""],
+.product-image-wrapper img:not([src]) {
+  display: none;
+}
+
+.product-image-wrapper:has(img[src=""]),
+.product-image-wrapper:has(img:not([src])) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image-wrapper:has(img[src=""])::before,
+.product-image-wrapper:has(img:not([src]))::before {
+  content: '📦';
+  font-size: 80px;
+  opacity: 0.3;
+}
+
 .product-card:hover .product-image-wrapper img {
   transform: scale(1.1);
 }
