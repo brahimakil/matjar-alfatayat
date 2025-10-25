@@ -77,10 +77,6 @@ const HeroBanner = () => {
     return null;
   }
 
-  const currentHero = heroImages[currentIndex];
-
-  const heroImageUrl = currentHero.imageUrl || '';
-
   return (
     <div className="hero-banner">
       <div className="hero-slides-container">
